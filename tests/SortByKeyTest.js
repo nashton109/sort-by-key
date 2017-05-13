@@ -116,8 +116,8 @@ describe('SortByKey', () => {
         it('should sort object by key', () => {
             const data = {
                 world: 'world',
-                hello: { weight: -1 },
                 foo: { weight: 1 },
+                hello: { weight: -1 },
                 bar: { weight: 1 }
             };
 
@@ -128,6 +128,12 @@ describe('SortByKey', () => {
                 foo: { weight: 1 },
                 bar: { weight: 1 }
             });
+
+            const keys = Object.keys(data);
+            unitjs.string(keys[0]).is('hello');
+            unitjs.string(keys[1]).is('world');
+            unitjs.string(keys[2]).is('foo');
+            unitjs.string(keys[3]).is('bar');
         });
 
         it('should skip object functions', () => {
